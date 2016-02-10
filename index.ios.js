@@ -28,10 +28,11 @@ class AwesomeProject extends Component {
     fetch("http://idea.selfup.me/api/v1/ideas/")
     .then((responseData) => {
       let responseBody = responseData._bodyText
-      this.setState({apiId: `Id: ${JSON.parse(responseBody)[0].id}`})
-      this.setState({apiTitle: `Title: ${JSON.parse(responseBody)[0].title}`})
-      this.setState({apiBody: `Body: ${JSON.parse(responseBody)[0].body}`})
-      this.setState({apiQuality: `Quality: ${JSON.parse(responseBody)[0].quality}`})
+      let responseObject = JSON.parse(responseBody)[0]
+      this.setState({apiId: `Id: ${responseObject.id}`})
+      this.setState({apiTitle: `Title: ${responseObject.title}`})
+      this.setState({apiBody: `Body: ${responseObject.body}`})
+      this.setState({apiQuality: `Quality: ${responseObject.quality}`})
     })
     .catch(error => {
       console.log(error);
